@@ -5,18 +5,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.eden.forever.course.User;
+import com.eden.forever.course.Manos;
 
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/manos")
 public class UserResources {
 
 	
 	@GetMapping
-	public ResponseEntity<User> findAll(){
+	public ResponseEntity<Manos> findAll(){
 		
 		
-		User u = new User(1L, "eden", "eden@gmail.com", "11 970750048", "bilada");
+		Manos u = new Manos(1L, "eden", "eden@gmail.com", "11 970750048", "bilada");
 		return ResponseEntity.ok().body(u);
 	}
 }
