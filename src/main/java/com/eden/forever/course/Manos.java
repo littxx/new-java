@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.eden.forever.entities.Order;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Manos implements Serializable {
@@ -26,6 +27,7 @@ public class Manos implements Serializable {
 	private String phone;
 	private String password;
 
+	@JsonIgnore
 	@OneToMany(mappedBy =  "client")
 	private List<Order> orders = new ArrayList<>();
 
