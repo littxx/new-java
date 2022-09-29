@@ -1,4 +1,4 @@
-package com.eden.forever.entities;
+package com.eden.forever.course;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.eden.forever.course.Manos;
+import com.eden.forever.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -32,18 +32,30 @@ public class Order implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private Manos client;
+	private Integer orderstatus;
 
 	public Order() {
 
 	}
 
-	public Order(Long id, Instant moment, Manos client) {
-		super();
-		this.id = id;
-		this.moment = moment;
-		this.client = client;
-	}
+		public Order(Long id, Instant moment, OrderStatus orderStatus, Manos client) {
+			super();
+			this.id = id;
+			this.moment = moment;
+			setOrderStatus(orderStatus);
+			this.client = client;
+		}
 
+
+		public OrderStatus getOrderStatus() {
+			return OrderStatus.valueOf(orderstatus);
+		}
+
+		public void setOrderStatus(OrderStatus orderStatus) {
+			if (orderStatus != null) {
+				this.orderstatus = orderStatus.getCode();
+			}
+		}
 	public Long getId() {
 		return id;
 	}
