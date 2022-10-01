@@ -23,5 +23,13 @@ public class ManoService {
 		Optional<Manos> obj = repository.findById(id);
 		return obj.get();
 	}
+	
+	public Manos insert(Manos obj) {
+		return repository.save(obj);
+	}
+	
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
 
 }
